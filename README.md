@@ -100,16 +100,6 @@ Garra de **engrenagens gêmeas**: um único servo aciona o *dedo motor*, e o *de
 ### `model/braco_robotico.scad` — o braço completo (2-DOF)
 Importa o `garra.scad` e adiciona a **base + ombro + elo**. O servo 1 levanta/abaixa o elo (U/D) e, no punho, o servo 2 aciona a garra (O/C). Faixa útil validada: **-20° (captura no plano) a +80° (recolhido)**.
 
-### Como exportar o STL (1 peça por vez)
-1. Abra o `.scad` no OpenSCAD.
-2. Escolha a peça na variável `show` / `part` (ou no **Customizer**):
-   - `braco_robotico.scad`: `assembly`, `arm_base`, `arm_link`, `garra_base`, `driver_finger`, `follower_finger`, `print_plate`
-   - `garra.scad`: `assembly`, `base`, `driver_finger`, `follower_finger`, `print_plate`
-3. **F6** (render — obrigatório) → **File ▸ Export ▸ Export as STL**.
-
-> As peças impressas são: base, elo e as peças da garra. Servos, horns, parafusos e LED são componentes reais (não impressos).
-
----
 
 ## ▶️ Como reproduzir
 
@@ -126,4 +116,6 @@ Sistema de **docking & retrieval** — manipulação e coleta de cargas/amostras
 
 ---
 
-*FIAP · Global Solution 2026 · Indústria Espacial · ESW 4º Ano · Project-Based Maker Lab — Firmware: Rodrigo Brasileiro (RM98952).*
+*FIAP · Global Solution 2026 · Indústria Espacial · ESPW 4º Ano · Project-Based Maker Lab*
+
+

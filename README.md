@@ -25,7 +25,7 @@
 
 | Recurso | Link |
 |---------|------|
-| 🔌 Simulador do circuito (Tinkercad — **público**) | _`https://www.tinkercad.com/things/aPYhfb0wO8s/editel?returnTo=%2Fusers%2F0ihK8cLdiOE&sharecode=gYKTYNBTAVL7AkND236sMprZ-sYblSV4BKXsZEcPdEs`_ |
+| 🔌 Simulador do circuito (Tinkercad — **público**) | [_`https://www.tinkercad.com/things/aPYhfb0wO8s/editel?returnTo=%2Fusers%2F0ihK8cLdiOE&sharecode=gYKTYNBTAVL7AkND236sMprZ-sYblSV4BKXsZEcPdEs`_ ](https://www.tinkercad.com/things/aPYhfb0wO8s/editel?returnTo=%2Fusers%2F0ihK8cLdiOE&sharecode=gYKTYNBTAVL7AkND236sMprZ-sYblSV4BKXsZEcPdEs)|
 
 ---
 

@@ -26,10 +26,6 @@
 | Recurso | Link |
 |---------|------|
 | 🔌 Simulador do circuito (Tinkercad — **público**) | _`(colar link público aqui)`_ |
-| 🎥 Vídeo de demonstração (YouTube, até 3 min) | _`(colar link aqui)`_ |
-| 💻 Repositório GitHub | _`(colar URL aqui)`_ |
-
-> ⚠️ A regra da disciplina invalida links de simulador **privados**. Confirme que o projeto do Tinkercad está em modo público/compartilhável antes de entregar.
 
 ---
 

@@ -60,13 +60,9 @@ Abra o **Monitor Serial** a **9600 baud** (terminação *Nova linha*). Digite um
 | `D` | **Down** — desce a articulação do braço | Servo 1 (ombro) |
 | `O` | **Open** — abre a garra | Servo 2 (mão) |
 | `C` | **Close** — fecha a garra (captura a amostra) | Servo 2 (mão) |
-| `H` | **Home** — retorna à posição neutra | Ambos |
-| `?` | **Ajuda** — lista os comandos | — |
+
 
 **LED de status:** aceso = garra **fechada** (segurando amostra); pisca na inicialização e em comando inválido.
-
-### Sequência de demonstração sugerida
-`?` → `O` (abre) → `U` `U` (sobe) → `C` (fecha = captura) → `D` (desce com a amostra) → `O` (solta) → `H` (home).
 
 ---
 

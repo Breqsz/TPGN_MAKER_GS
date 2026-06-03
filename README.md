@@ -17,7 +17,7 @@
 | Rodrigo Brasileiro | RM98952 |
 | Thiago Jardim de Oliveira | RM551624 |
 
-**Grupo:** _`(preencher o nome do grupo)`_
+**Grupo:** _`TPGN - TechPulse Global Network`_
 
 ---
 

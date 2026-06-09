@@ -1,117 +1,184 @@
-# 🛰️ Braço Robótico de Coleta de Amostras — *Docking & Retrieval*
+# TPGN Maker GS - Braco Robotico de Coleta de Amostras
 
-**Global Solution 2026 · Indústria Espacial** — FIAP · Engenharia de Software · 4º Ano (Presencial)
-**Disciplina:** Project-Based Maker Lab (PBML)
+Projeto desenvolvido para a Global Solution 2026 da FIAP, com foco em Industria Espacial, usando Arduino, servomotores e modelagem 3D parametrica em OpenSCAD.
 
-> Braço robótico de 2 graus de liberdade para **captura de amostras em microgravidade**, controlado por comandos de teclado via Monitor Serial. Um Arduino Uno aciona **2 servomotores** (a articulação do braço e a garra) e um **LED de status**. O circuito é simulado no Tinkercad e as peças mecânicas são modeladas de forma paramétrica em OpenSCAD.
+O sistema simula um braco robotico de 2 graus de liberdade para operacoes de docking & retrieval, isto e, captura, manipulacao e recolhimento de amostras ou pequenos detritos em um cenario inspirado em microgravidade.
 
----
+## Visao geral
 
-## 👥 Integrantes
+O prototipo e composto por:
+
+| Area | Descricao |
+| --- | --- |
+| Controle | Firmware Arduino com comandos via Monitor Serial |
+| Atuadores | 2 micro servos SG90: articulacao do braco e garra |
+| Sinalizacao | LED de status para indicar garra fechada |
+| Simulacao | Circuito publico no Tinkercad |
+| Modelagem | Pecas mecanicas parametrizadas em OpenSCAD |
+| Impressao 3D | Arquivos STL exportados para braco, base, elo e dedos da garra |
+
+## Objetivo
+
+Criar um demonstrador funcional de um mecanismo robotico simples, capaz de:
+
+- Subir e descer a articulacao principal do braco.
+- Abrir e fechar uma garra mecanica acionada por servo.
+- Sinalizar visualmente quando a amostra esta capturada.
+- Representar, em escala didatica, uma aplicacao de coleta de amostras, manutencao orbital ou captura de detritos espaciais.
+
+## Integrantes
 
 | Nome | RM |
-|------|----|
+| --- | --- |
 | Guilherme Rocha Bianchini | RM97974 |
 | Nikolas Rodrigues Moura dos Santos | RM551566 |
 | Pedro Henrique Pedrosa Tavares | RM97877 |
 | Rodrigo Brasileiro | RM98952 |
 | Thiago Jardim de Oliveira | RM551624 |
 
-**Grupo:** _`TPGN - TechPulse Global Network`_
+Grupo: `TPGN - TechPulse Global Network`
 
----
-
-## 🔗 Links da entrega
+## Links da entrega
 
 | Recurso | Link |
-|---------|------|
-| 🔌 Simulador do circuito (Tinkercad — **público**) | [_`https://www.tinkercad.com/things/aPYhfb0wO8s/editel?returnTo=%2Fusers%2F0ihK8cLdiOE&sharecode=gYKTYNBTAVL7AkND236sMprZ-sYblSV4BKXsZEcPdEs`_ ](https://www.tinkercad.com/things/aPYhfb0wO8s/editel?returnTo=%2Fusers%2F0ihK8cLdiOE&sharecode=gYKTYNBTAVL7AkND236sMprZ-sYblSV4BKXsZEcPdEs)|
+| --- | --- |
+| Simulador do circuito no Tinkercad | [Abrir projeto](https://www.tinkercad.com/things/aPYhfb0wO8s/editel?returnTo=%2Fusers%2F0ihK8cLdiOE&sharecode=gYKTYNBTAVL7AkND236sMprZ-sYblSV4BKXsZEcPdEs) |
 
----
+## Estrutura do repositorio
 
-## 🗂️ Estrutura do repositório
-
-```
-GS2026-PBML-Braco-Robotico/
-├── src/
-│   └── braco_robotico.ino        # firmware do Arduino (controle serial dos servos)
-├── model/
-│   ├── garra.scad                # modelo 3D paramétrico — a MÃO (garra de engrenagens)
-│   ├── braco_robotico.scad       # modelo 3D paramétrico — o BRAÇO completo (importa garra.scad)
-│   ├── garra.stl                 # exportação universal da garra        (gerar no OpenSCAD)
-│   └── braco_robotico.stl        # exportação universal do braço        (gerar no OpenSCAD)
-├── images/
-│   ├── circuito_tinkercad.png    # print do circuito simulado           (adicionar)
-│   ├── serial_monitor.png        # print do Monitor Serial em operação   (adicionar)
-│   ├── braco_3d_lateral.png      # vista lateral do braço (validação)
-│   └── garra_layout_verificacao.png  # vista de topo da garra (validação)
-└── README.md
+```text
+TPGN_MAKER_GS/
+|-- README.md
+|-- src/
+|   `-- braco_robotico.ino
+`-- model/
+    |-- braco_robotico.scad
+    |-- garra.scad
+    |-- braco_robotico.stl
+    |-- arm_base.stl
+    |-- arm_link.stl
+    |-- garra.stl
+    |-- garra_base.stl
+    |-- driver_finger.stl
+    `-- follower_finger.stl
 ```
 
----
+## Hardware e componentes
 
-## 🎮 Guia de operação (comandos do Monitor Serial)
+| Componente | Funcao |
+| --- | --- |
+| Arduino Uno R3 | Controlador do circuito |
+| 2x micro servo SG90 9g | Movimento do braco e abertura/fechamento da garra |
+| LED | Indicador de garra fechada |
+| Resistor 220 ohm | Limitacao de corrente do LED |
+| Fonte externa 5 V ou 6 V | Alimentacao recomendada para os servos |
+| Protoboard e jumpers | Conexoes eletricas |
 
-Abra o **Monitor Serial** a **9600 baud** (terminação *Nova linha*). Digite um caractere e Enter:
+Importante: para montagem fisica, os servos devem ser alimentados por fonte externa de 5 V ou 6 V, mantendo GND comum com o Arduino. Evite alimentar os servos diretamente pelo pino 5V do Arduino.
 
-| Comando | Ação | Servo afetado |
-|:---:|------|------|
-| `U` | **Up** — sobe a articulação do braço | Servo 1 (ombro) |
-| `D` | **Down** — desce a articulação do braço | Servo 1 (ombro) |
-| `O` | **Open** — abre a garra | Servo 2 (mão) |
-| `C` | **Close** — fecha a garra (captura a amostra) | Servo 2 (mão) |
+## Pinagem
 
+| Pino Arduino | Conexao |
+| --- | --- |
+| `D9` | Sinal do Servo 1 - articulacao do braco |
+| `D10` | Sinal do Servo 2 - garra |
+| `D7` | LED de status com resistor de 220 ohm |
+| `GND` | Terra comum entre Arduino, fonte e servos |
 
-**LED de status:** aceso = garra **fechada** (segurando amostra); pisca na inicialização e em comando inválido.
+## Firmware
 
----
+O firmware esta em [`src/braco_robotico.ino`](src/braco_robotico.ino) e usa a biblioteca padrao `Servo.h`.
 
-## 🔧 Especificações técnicas
+Configuracoes principais:
 
-### Circuito (Tinkercad)
-- **Controlador:** Arduino Uno R3
-- **Atuadores:** 2× micro servo **SG90 (9g)** — articulação (U/D) + garra (O/C)
-- **Sinalização:** 1× LED de status + resistor **220 Ω**
-- **Alimentação dos servos:** **fonte de bancada 5 V (ou 6 V)** — *não* o pino 5V do Arduino
-- **Terra comum:** GND do Arduino ligado ao trilho da fonte (referência do PWM)
+| Parametro | Valor |
+| --- | --- |
+| Baud rate | `9600` |
+| Angulo inicial do braco | `90` graus |
+| Limite minimo do braco | `10` graus |
+| Limite maximo do braco | `170` graus |
+| Passo por comando | `15` graus |
+| Garra aberta | `120` graus |
+| Garra fechada | `30` graus |
+| Delay de movimento | `15 ms` por grau |
 
-### Pinagem do Arduino
-| Pino | Conexão |
-|:---:|---------|
-| `~D9` | Sinal do Servo 1 — articulação (U/D) |
-| `~D10` | Sinal do Servo 2 — garra (O/C) |
-| `D7` | LED de status (via resistor 220 Ω) |
-| `GND` | Terra comum: fonte + servos + LED |
-| `5V` | *Não usar para os servos* (apenas lógica) |
+## Comandos do Monitor Serial
 
----
+Abra o Monitor Serial em `9600 baud`, envie um caractere e pressione Enter.
 
-## 🖨️ Modelos 3D (OpenSCAD — paramétricos)
+| Comando | Acao | Servo |
+| --- | --- | --- |
+| `U` | Sobe a articulacao do braco | Servo 1 |
+| `D` | Desce a articulacao do braco | Servo 1 |
+| `O` | Abre a garra | Servo 2 |
+| `C` | Fecha a garra | Servo 2 |
 
-**Software de modelagem:** [OpenSCAD](https://openscad.org). Todas as dimensões são **variáveis** editáveis no topo de cada arquivo (e via *Customizer*), prevendo o encaixe dos servos SG90 de 9g.
+Comportamento do LED:
 
-### `model/garra.scad` — a mão
-Garra de **engrenagens gêmeas**: um único servo aciona o *dedo motor*, e o *dedo seguidor* engrena nele e fecha de forma simétrica. As pontas têm um **berço côncavo** que abraça uma amostra esférica.
+- LED aceso: garra fechada, representando amostra capturada.
+- LED apagado: garra aberta.
+- Comandos invalidos sao informados no Monitor Serial.
 
-### `model/braco_robotico.scad` — o braço completo (2-DOF)
-Importa o `garra.scad` e adiciona a **base + ombro + elo**. O servo 1 levanta/abaixa o elo (U/D) e, no punho, o servo 2 aciona a garra (O/C). Faixa útil validada: **-20° (captura no plano) a +80° (recolhido)**.
+## Modelos 3D
 
+Os modelos foram criados em OpenSCAD de forma parametrica, permitindo ajustar dimensoes, folgas, encaixes e layout de exportacao.
 
-## ▶️ Como reproduzir
+| Arquivo | Descricao |
+| --- | --- |
+| `model/garra.scad` | Modelo parametrico da garra com engrenagens gemeas |
+| `model/braco_robotico.scad` | Montagem completa do braco 2-DOF, importando a garra |
+| `model/garra.stl` | STL da garra montada |
+| `model/garra_base.stl` | STL da base da garra |
+| `model/driver_finger.stl` | STL do dedo motor da garra |
+| `model/follower_finger.stl` | STL do dedo seguidor da garra |
+| `model/braco_robotico.stl` | STL da montagem do braco |
+| `model/arm_base.stl` | STL da base do braco |
+| `model/arm_link.stl` | STL do elo do braco |
 
-1. **Circuito:** abra o projeto no Tinkercad (link acima), confirme a fonte em 5–6 V e o terra comum, e clique em *Start Simulation*.
-2. **Firmware:** o código de `src/braco_robotico.ino` já está carregado no Arduino do simulador (editor em modo *Text*). Para uso real, abra-o na Arduino IDE (usa a biblioteca padrão `Servo.h`).
-3. **Operação:** abra o Monitor Serial (9600 baud) e use os comandos da tabela acima.
-4. **Peças 3D:** abra os `.scad` no OpenSCAD para visualizar/ajustar/exportar.
+### Garra
 
----
+A garra usa um mecanismo de engrenagens gemeas. Um servo aciona o dedo motor, enquanto o dedo seguidor acompanha o movimento por engrenamento, fechando de forma simetrica. As pontas possuem geometria concava para envolver uma amostra esferica de referencia.
 
-## 🌍 Conexão com a Indústria Espacial e ODS
+### Braco
 
-Sistema de **docking & retrieval** — manipulação e coleta de cargas/amostras em ambiente de microgravidade, base tecnológica para captura de detritos orbitais, coleta de regolito e manutenção de satélites. Conecta-se ao **ODS 9** (Inovação e Infraestrutura).
+O arquivo `braco_robotico.scad` reutiliza os modulos de `garra.scad` e adiciona:
 
----
+- Base do braco.
+- Suporte do ombro.
+- Elo principal.
+- Acoplamento da garra ao punho.
+- Suporte opcional para LED.
 
-*FIAP · Global Solution 2026 · Indústria Espacial · ESPW 4º Ano · Project-Based Maker Lab*
+## Como reproduzir
 
+1. Abra o projeto do Tinkercad pelo link da entrega.
+2. Verifique se o circuito usa GND comum entre Arduino e fonte dos servos.
+3. Inicie a simulacao.
+4. Abra o Monitor Serial em `9600 baud`.
+5. Envie os comandos `U`, `D`, `O` e `C` para testar os movimentos.
+6. Para uso fisico, abra `src/braco_robotico.ino` na Arduino IDE e envie o codigo para um Arduino Uno.
+7. Para visualizar ou alterar as pecas, abra os arquivos `.scad` no OpenSCAD.
+8. Para exportar novos STLs, renderize com `F6` e use `File > Export > Export as STL`.
 
+## Tecnologias utilizadas
+
+- Arduino Uno
+- Arduino IDE
+- Biblioteca `Servo.h`
+- Tinkercad Circuits
+- OpenSCAD
+- Modelos STL para impressao 3D
+
+## Relacao com ODS
+
+O projeto se conecta ao ODS 9 - Industria, Inovacao e Infraestrutura, pois explora automacao, prototipagem, sistemas embarcados e modelagem mecanica aplicados a um problema inspirado na industria espacial.
+
+## Contexto academico
+
+Projeto academico desenvolvido para:
+
+- FIAP
+- Engenharia de Software - 4o ano presencial
+- Project-Based Maker Lab
+- Global Solution 2026
+- Tema: Industria Espacial
